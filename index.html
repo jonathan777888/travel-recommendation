@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travel Recommendation</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">TravelBloom</div>
+
+```
+<ul class="nav-links">
+  <li><a href="#home">Home</a></li>
+  <li><a href="#about">About Us</a></li>
+  <li><a href="#contact">Contact Us</a></li>
+</ul>
+
+<div class="search-box">
+  <input type="text" id="searchInput" placeholder="Search beaches, temples, countries" />
+  <button onclick="searchRecommendation()">Search</button>
+  <button onclick="clearResults()">Clear</button>
+</div>
+```
+
+  </nav>
+
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Explore Dream Destinations</h1>
+      <p>
+        Welcome to TravelBloom, your travel recommendation website. 
+        Discover beautiful beaches, peaceful temples, and amazing countries around the world.
+      </p>
+      <button onclick="document.getElementById('searchInput').focus()">Book Now</button>
+    </div>
+  </section>
+
+  <section id="results" class="results-section">
+    <h2>Recommendations</h2>
+    <div id="resultsContainer" class="results-container"></div>
+  </section>
+
+  <section id="about" class="about-section">
+    <h2>About Us</h2>
+    <p>
+      TravelBloom is a travel recommendation platform created to help travelers find inspiring places to visit.
+      Our goal is to make travel planning easier by suggesting beaches, temples, and countries based on your search.
+    </p>
+
+```
+<h3>Our Team</h3>
+<div class="team">
+  <div class="team-card">
+    <h4>Jonathan Kpakpo</h4>
+    <p>Project Developer</p>
+  </div>
+  <div class="team-card">
+    <h4>Travel Advisor</h4>
+    <p>Destination Specialist</p>
+  </div>
+  <div class="team-card">
+    <h4>Support Agent</h4>
+    <p>Customer Support</p>
+  </div>
+</div>
+```
+
+  </section>
+
+  <section id="contact" class="contact-section">
+    <h2>Contact Us</h2>
+    <p>Contact us for more travel information.</p>
+
+```
+<form class="contact-form">
+  <input type="text" placeholder="Your name" required />
+  <input type="email" placeholder="Your email" required />
+  <textarea placeholder="Your message" required></textarea>
+  <button type="submit">Submit</button>
+</form>
+```
+
+  </section>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
