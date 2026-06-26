@@ -2,25 +2,221 @@
 
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Travel Recommendation</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
 
-  <nav class="navbar">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f4f8fb;
+      color: #222;
+    }
+
+    nav {
+      background-color: #023047;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 35px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin: 0 12px;
+      font-weight: bold;
+    }
+
+    .nav-links a:hover {
+      color: #ffb703;
+    }
+
+    .search-box input {
+      padding: 8px;
+      width: 260px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    button {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 5px;
+      background-color: #fb8500;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      margin-left: 5px;
+    }
+
+    button:hover {
+      background-color: #ffb703;
+      color: #023047;
+    }
+
+    .hero {
+      min-height: 85vh;
+      background: linear-gradient(rgba(2, 48, 71, 0.7), rgba(2, 48, 71, 0.7)),
+        url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 60px;
+    }
+
+    .hero-content {
+      max-width: 650px;
+    }
+
+    .hero-content h1 {
+      font-size: 58px;
+      margin-bottom: 20px;
+    }
+
+    .hero-content p {
+      font-size: 20px;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    section {
+      padding: 60px 40px;
+    }
+
+    h2 {
+      font-size: 36px;
+      color: #023047;
+      margin-bottom: 25px;
+    }
+
+    .results-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card-content h3 {
+      color: #023047;
+      margin-bottom: 10px;
+    }
+
+    .about-section {
+      background-color: white;
+    }
+
+    .about-section p {
+      max-width: 900px;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+
+    .team {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .team-card {
+      background-color: #e8f4fa;
+      padding: 20px;
+      border-radius: 10px;
+      width: 250px;
+    }
+
+    .contact-section {
+      background-color: #023047;
+      color: white;
+    }
+
+    .contact-section h2 {
+      color: white;
+    }
+
+    .contact-form {
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .contact-form textarea {
+      min-height: 140px;
+    }
+
+    @media (max-width: 900px) {
+      nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .hero-content h1 {
+        font-size: 40px;
+      }
+
+      .search-box input {
+        width: 100%;
+        margin-bottom: 8px;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  <nav>
     <div class="logo">TravelBloom</div>
 
 ```
-<ul class="nav-links">
-  <li><a href="#home">Home</a></li>
-  <li><a href="#about">About Us</a></li>
-  <li><a href="#contact">Contact Us</a></li>
-</ul>
+<div class="nav-links">
+  <a href="#home">Home</a>
+  <a href="#about">About Us</a>
+  <a href="#contact">Contact Us</a>
+</div>
 
 <div class="search-box">
-  <input type="text" id="searchInput" placeholder="Search beaches, temples, countries" />
+  <input type="text" id="searchInput" placeholder="Search beach, temple, country">
   <button onclick="searchRecommendation()">Search</button>
   <button onclick="clearResults()">Clear</button>
 </div>
@@ -32,14 +228,14 @@
     <div class="hero-content">
       <h1>Explore Dream Destinations</h1>
       <p>
-        Welcome to TravelBloom, your travel recommendation website. 
+        Welcome to TravelBloom, your travel recommendation website.
         Discover beautiful beaches, peaceful temples, and amazing countries around the world.
       </p>
       <button onclick="document.getElementById('searchInput').focus()">Book Now</button>
     </div>
   </section>
 
-  <section id="results" class="results-section">
+  <section id="results">
     <h2>Recommendations</h2>
     <div id="resultsContainer" class="results-container"></div>
   </section>
@@ -53,15 +249,19 @@
 
 ```
 <h3>Our Team</h3>
+<br>
+
 <div class="team">
   <div class="team-card">
     <h4>Jonathan Kpakpo</h4>
     <p>Project Developer</p>
   </div>
+
   <div class="team-card">
     <h4>Travel Advisor</h4>
     <p>Destination Specialist</p>
   </div>
+
   <div class="team-card">
     <h4>Support Agent</h4>
     <p>Customer Support</p>
@@ -74,11 +274,12 @@
   <section id="contact" class="contact-section">
     <h2>Contact Us</h2>
     <p>Contact us for more travel information.</p>
+    <br>
 
 ```
 <form class="contact-form">
-  <input type="text" placeholder="Your name" required />
-  <input type="email" placeholder="Your email" required />
+  <input type="text" placeholder="Your name" required>
+  <input type="email" placeholder="Your email" required>
   <textarea placeholder="Your message" required></textarea>
   <button type="submit">Submit</button>
 </form>
@@ -86,7 +287,98 @@
 
   </section>
 
-  <script src="script.js"></script>
+  <script>
+    const recommendations = {
+      beach: [
+        {
+          name: "Maldives Beach",
+          image: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=900&q=80",
+          description: "A peaceful tropical beach with clear blue water and white sand."
+        },
+        {
+          name: "Bora Bora Beach",
+          image: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=900&q=80",
+          description: "A beautiful island destination known for turquoise lagoons and relaxing views."
+        }
+      ],
+
+      temple: [
+        {
+          name: "Kyoto Temple",
+          image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=900&q=80",
+          description: "A historic Japanese temple surrounded by nature and traditional architecture."
+        },
+        {
+          name: "Temple in Thailand",
+          image: "https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=900&q=80",
+          description: "A peaceful temple destination with rich culture and beautiful design."
+        }
+      ],
+
+      country: [
+        {
+          name: "Japan",
+          image: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=900&q=80",
+          description: "Japan offers modern cities, ancient temples, mountains, and unique cultural experiences."
+        },
+        {
+          name: "Italy",
+          image: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=900&q=80",
+          description: "Italy is famous for history, art, food, architecture, and beautiful cities."
+        }
+      ]
+    };
+
+    function searchRecommendation() {
+      const input = document.getElementById("searchInput").value.toLowerCase().trim();
+      const resultsContainer = document.getElementById("resultsContainer");
+
+      resultsContainer.innerHTML = "";
+
+      let results = [];
+
+      if (input.includes("beach") || input.includes("beaches") || input.includes("plage") || input.includes("plages")) {
+        results = recommendations.beach;
+      } else if (input.includes("temple") || input.includes("temples")) {
+        results = recommendations.temple;
+      } else if (
+        input.includes("country") ||
+        input.includes("countries") ||
+        input.includes("pays") ||
+        input.includes("japan") ||
+        input.includes("italy")
+      ) {
+        results = recommendations.country;
+      }
+
+      if (results.length === 0) {
+        resultsContainer.innerHTML = "<p>No recommendation found. Try searching for beach, temple, or country.</p>";
+        document.getElementById("results").scrollIntoView({ behavior: "smooth" });
+        return;
+      }
+
+      results.forEach(function(place) {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        card.innerHTML =
+          '<img src="' + place.image + '" alt="' + place.name + '">' +
+          '<div class="card-content">' +
+          '<h3>' + place.name + '</h3>' +
+          '<p>' + place.description + '</p>' +
+          '</div>';
+
+        resultsContainer.appendChild(card);
+      });
+
+      document.getElementById("results").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function clearResults() {
+      document.getElementById("searchInput").value = "";
+      document.getElementById("resultsContainer").innerHTML = "";
+    }
+  </script>
 
 </body>
 </html>
